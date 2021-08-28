@@ -42,11 +42,11 @@ class Student
 
     private function setEmail(string $email)
     {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
-            $this->email = $email;
-        } else {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
             throw new \InvalidArgumentException('Invalid e-mail address');
         }
+
+        $this->email = $email;
     }
 
     public function getEmail(): string
@@ -66,19 +66,17 @@ class Student
 
     public function hasAccess(): bool
     {
-        if ($this->watchedVideos->count() > 0) {
-            $this->watchedVideos->sort(fn (DateTimeInterface $dateA, DateTimeInterface $dateB) => $dateA <=> $dateB);
-            /** @var DateTimeInterface $firstDate */
-            $firstDate = $this->watchedVideos->first()->value;
-            $today = new \DateTimeImmutable();
 
-            if ($firstDate->diff($today)->days >= 90) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
+        if ($this->watchedVideos->count() === 0) {
             return true;
         }
+
+        $this->watchedVideos->sort(fn(DateTimeInterface $dateA, DateTimeInterface $dateB) => $dateA <=> $dateB);
+        /** @var DateTimeInterface $firstDate */
+        $firstDate = $this->watchedVideos->first()->value;
+        $today = new \DateTimeImmutable();
+
+        return $firstDate->diff($today)->days < 90;
+
     }
 }
