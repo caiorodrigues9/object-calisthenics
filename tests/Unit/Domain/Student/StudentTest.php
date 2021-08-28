@@ -2,6 +2,7 @@
 
 namespace Caio\Calisthenics\Tests\Unit\Domain\Student;
 
+use Caio\Calisthenics\Domain\Email\Email;
 use Caio\Calisthenics\Domain\Student\Student;
 use Caio\Calisthenics\Domain\Video\Video;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +14,7 @@ class StudentTest extends TestCase
     protected function setUp(): void
     {
         $this->student = new Student(
-            'email@example.com',
+            new Email('email@example.com'),
             new \DateTimeImmutable('1997-10-15'),
             'Vinicius',
             'Dias',
