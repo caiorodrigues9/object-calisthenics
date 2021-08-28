@@ -2,9 +2,9 @@
 
 namespace Caio\Calisthenics\Tests\Unit\Domain\Video;
 
-use Alura\Calisthenics\Domain\Student\Student;
-use Alura\Calisthenics\Domain\Video\InMemoryVideoRepository;
-use Alura\Calisthenics\Domain\Video\Video;
+use Caio\Calisthenics\Domain\Student\Student;
+use Caio\Calisthenics\Domain\Video\InMemoryVideoRepository;
+use Caio\Calisthenics\Domain\Video\Video;
 use PHPUnit\Framework\TestCase;
 
 class InMemoryVideoRepositoryTest extends TestCase

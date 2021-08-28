@@ -4,24 +4,17 @@ namespace Caio\Calisthenics\Domain\Video;
 
 class Video
 {
-    public const PUBLIC = 1;
-    public const PRIVATE = 2;
-
-    private int $visibility = self::PRIVATE;
+    private bool $visible = false;
     private int $ageLimit;
 
-    public function getVisibility(): int
+    public function isPublic(): bool
     {
-        return $this->visibility;
+        return $this->visible;
     }
 
-    public function checkIfVisibilityIsValidAndUpdateIt(int $visibility): void
+    public function publish()
     {
-        if (in_array($visibility, [self::PUBLIC, self::PRIVATE])) {
-            $this->visibility = $visibility;
-        } else {
-            throw new \InvalidArgumentException('Invalid visibility');
-        }
+        $this->visible = true;
     }
 
     public function getAgeLimit(): int

@@ -2,7 +2,7 @@
 
 namespace Caio\Calisthenics\Domain\Student;
 
-use Alura\Calisthenics\Domain\Video\Video;
+use Caio\Calisthenics\Domain\Video\Video;
 use DateTimeInterface;
 use Ds\Map;
 

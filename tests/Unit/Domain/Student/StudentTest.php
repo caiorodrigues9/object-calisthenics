@@ -2,8 +2,8 @@
 
 namespace Caio\Calisthenics\Tests\Unit\Domain\Student;
 
-use Alura\Calisthenics\Domain\Student\Student;
-use Alura\Calisthenics\Domain\Video\Video;
+use Caio\Calisthenics\Domain\Student\Student;
+use Caio\Calisthenics\Domain\Video\Video;
 use PHPUnit\Framework\TestCase;
 
 class StudentTest extends TestCase

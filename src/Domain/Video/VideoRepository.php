@@ -2,7 +2,7 @@
 
 namespace Caio\Calisthenics\Domain\Video;
 
-use Alura\Calisthenics\Domain\Student\Student;
+use Caio\Calisthenics\Domain\Student\Student;
 
 interface VideoRepository
 {
