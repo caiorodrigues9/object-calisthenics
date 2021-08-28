@@ -11,33 +11,33 @@ class Student
     private WatchedVideos $watchedVideos;
 
     public function __construct(
-        private Email $email,
-        private DateTimeInterface $bd,
-        private string $fName,
-        private string $lName,
-        public string $street,
-        public string $number,
-        public string $province,
-        public string $city,
-        public string $state,
-        public string $country)
+        private Email             $email,
+        private DateTimeInterface $birthDate,
+        private string            $firstName,
+        private string            $lastName,
+        public string             $street,
+        public string             $number,
+        public string             $province,
+        public string             $city,
+        public string             $state,
+        public string             $country)
     {
         $this->watchedVideos = new WatchedVideos();
     }
 
-    public function getFullName(): string
+    public function fullName(): string
     {
-        return "{$this->fName} {$this->lName}";
+        return "{$this->firstName} {$this->lastName}";
     }
 
-    public function getEmail(): string
+    public function email(): string
     {
         return $this->email;
     }
 
-    public function getBd(): DateTimeInterface
+    public function birthDate(): DateTimeInterface
     {
-        return $this->bd;
+        return $this->birthDate;
     }
 
     public function watch(Video $video, DateTimeInterface $date)
@@ -57,5 +57,12 @@ class Student
 
         return $firstDate->diff($today)->days < 90;
 
+    }
+
+    public function age(): int
+    {
+        $today = new \DateTimeImmutable();
+        $dateInterval = $this->birthDate->diff($today);
+        return $dateInterval->y;
     }
 }
